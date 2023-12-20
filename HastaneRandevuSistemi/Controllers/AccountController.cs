@@ -6,9 +6,19 @@ namespace HastaneRandevuSistemi.Controllers
     public class AccountController : Controller
     {
         
-        public IActionResult Login(LoginViewModel model)
+        public IActionResult Login()
         {
             if(ModelState.IsValid)
+            {
+               
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
             {
                 // login işlemleri
             }
