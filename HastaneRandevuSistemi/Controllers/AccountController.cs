@@ -8,10 +8,7 @@ namespace HastaneRandevuSistemi.Controllers
         
         public IActionResult Login()
         {
-            if(ModelState.IsValid)
-            {
-               
-            }
+           
             return View();
         }
 
@@ -20,14 +17,23 @@ namespace HastaneRandevuSistemi.Controllers
         {
             if (ModelState.IsValid)
             {
-                // login işlemleri
+                if(model.Username == "Abdülkadir" && model.Password == "30358675872Abc++")
+                    return RedirectToAction("AccountOperations"); 
+
             }
             return View(model);
         }
 
-        public IActionResult Register()
+       
+
+        [HttpGet]
+        public IActionResult AccountOperations()
         {
+            
+
             return View();
         }
+
+        
     }
 }
