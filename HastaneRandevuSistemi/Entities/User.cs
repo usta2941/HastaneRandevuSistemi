@@ -10,15 +10,15 @@ namespace HastaneRandevuSistemi.Entities
         public Guid Id { get; set; }
 
         [StringLength(50)]
-        public string FullName { get; set; }
+        public string? FullName { get; set; }
 
         [Required]
         [StringLength(100)]
-        public string Password { get; set; }
+        public string? Password { get; set; }
 
         [Required]
         [EmailAddress]
-        public string Email {  get; set; }
+        public string? Email {  get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 

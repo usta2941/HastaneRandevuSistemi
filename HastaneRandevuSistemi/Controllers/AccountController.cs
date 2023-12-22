@@ -1,11 +1,19 @@
-﻿using HastaneRandevuSistemi.Models;
+﻿using HastaneRandevuSistemi.Entities;
+using HastaneRandevuSistemi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HastaneRandevuSistemi.Controllers
 {
+    
     public class AccountController : Controller
     {
-        
+        private readonly DatabaseContext _databaseContext;
+
+        public AccountController(DatabaseContext databaseContext)
+        {
+            _databaseContext = databaseContext;
+        }
+
         public IActionResult Login()
         {
            
@@ -24,6 +32,23 @@ namespace HastaneRandevuSistemi.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public IActionResult AccountRegister(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = new User()
+                {
+                    FullName = model.Username,
+                    Password = model.Password
+                };
+                _databaseContext.Users.Add(user);
+                _databaseContext.SaveChanges();
+
+            }
+
+            return View(model);
+        }
        
 
         [HttpGet]
