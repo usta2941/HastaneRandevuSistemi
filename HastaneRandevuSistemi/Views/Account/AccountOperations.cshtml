@@ -11,8 +11,9 @@
     <h3>Yapmak istediğiniz işlemi seçin</h3>
 
     <ul class="button-list">
+        <li><a class="nav-link text-dark" asp-area="" asp-controller="Doctor" asp-action="Ekle">Doktor Ekle</a></li>
         <li><input type="button" class="button" value="Bölüm Ekle" onclick="buttonClicked('Bölüm Ekle')"></li>
-        <li><input type="button" class="button" value="Doktor Ekle" onclick="buttonClicked('Doktor Ekle')"></li>
+        <li><input type="button" class="button" asp-area=""  value="Doktor Ekle" onclick="buttonClicked('Doktor Ekle')"></li>
         <li><input type="button" class="button" value="Doktor Ekle - Yeni Yetkili Ekle" onclick="buttonClicked('Doktor Ekle - Yeni Yetkili Ekle')"></li>
         <li><input type="button" class="button" value="Hastane Raporu Sorgula" onclick="buttonClicked('Hastane Raporu Sorgula')"></li>
     </ul>

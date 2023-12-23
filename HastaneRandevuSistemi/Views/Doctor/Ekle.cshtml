@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Hastane Sistemi - Yeni Doktor Ekle</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Hastane Sistemi - Yeni Doktor Ekle</h2>
+        <form id="doctorForm">
+            <div class="form-group">
+                <label for="doctorName">Doktor Adı:</label>
+                <input type="text" class="form-control" id="doctorName" required>
+            </div>
+            <div class="form-group">
+                <label for="specialty">Uzmanlık Alanı:</label>
+                <input type="text" class="form-control" id="specialty" required>
+            </div>
+            <div class="form-group">
+                <label for="hospital">Çalıştığı Hastane:</label>
+                <input type="text" class="form-control" id="hospital" required>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="submitForm()">Gönder</button>
+        </form>
+        <div id="result" style="margin-top: 20px;"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        function submitForm() {
+            var doctorName = document.getElementById('doctorName').value;
+            var specialty = document.getElementById('specialty').value;
+            var hospital = document.getElementById('hospital').value;
+
+            // Burada form verilerini kullanarak istediğiniz işlemleri gerçekleştirebilirsiniz.
+            // Örneğin, veritabanına doktoru ekleyebilir veya başka bir API'ye gönderebilirsiniz.
+
+            // Bu örnekte sadece sonucu ekrana yazdırıyoruz.
+            var resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p style="color: green;">JavaScript ile işlem yapıldı. Yeni doktor eklendi: ' +
+                doctorName + ' - ' + specialty + ' - ' + hospital + '</p>';
+        }
+    </script>
+
+</body>
+</html>
