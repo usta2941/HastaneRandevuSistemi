@@ -1,11 +1,18 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HastaneRandevuSistemi.Models
+namespace HastaneRandevuSistemi.Entities
 {
-    public class Doctor
+    [Table("Doctors")]
+    public class DbDoctor
     {
-        
+        [Key]
+        public Guid DoctorId { get; set; }
+
+        [StringLength(50)]
         public string? Name { get; set; }
+        [Required]
+        [StringLength(100)]
         public string? Deparmant { get; set; }
         public DateTime start { get; set; } // mesai başlangıcı
         public DateTime end { get; set; } // mesai bitişi

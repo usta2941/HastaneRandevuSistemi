@@ -2,7 +2,7 @@
 {
     public class Hasta
     {
-        public Guid HastaId { get; set; }
+        
         public string? Ad { get; set; }
         public string? Soyad { get; set; }
         public DateTime DogumTarihi { get; set; }

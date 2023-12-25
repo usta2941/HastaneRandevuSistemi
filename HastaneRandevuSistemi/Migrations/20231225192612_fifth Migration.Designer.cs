@@ -4,6 +4,7 @@ using HastaneRandevuSistemi.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HastaneRandevuSistemi.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20231225192612_fifth Migration")]
+    partial class fifthMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,18 +65,18 @@ namespace HastaneRandevuSistemi.Migrations
                     b.Property<string>("Ad")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("DoctorId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("DogumTarihi")
                         .HasColumnType("datetime2");
+
+                    b.Property<Guid>("DoktorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Soyad")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("HastaId");
 
-                    b.HasIndex("DoctorId");
+                    b.HasIndex("DoktorId");
 
                     b.ToTable("Hastas");
                 });
@@ -85,6 +87,9 @@ namespace HastaneRandevuSistemi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("DoktorId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("HastaId")
                         .HasColumnType("uniqueidentifier");
 
@@ -92,6 +97,8 @@ namespace HastaneRandevuSistemi.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("RandevuId");
+
+                    b.HasIndex("DoktorId");
 
                     b.HasIndex("HastaId");
 
@@ -129,7 +136,7 @@ namespace HastaneRandevuSistemi.Migrations
                 {
                     b.HasOne("HastaneRandevuSistemi.Entities.DbDoctor", "Doktor")
                         .WithMany()
-                        .HasForeignKey("DoctorId")
+                        .HasForeignKey("DoktorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -138,11 +145,19 @@ namespace HastaneRandevuSistemi.Migrations
 
             modelBuilder.Entity("HastaneRandevuSistemi.Entities.DbRandevu", b =>
                 {
+                    b.HasOne("HastaneRandevuSistemi.Entities.DbDoctor", "Doktor")
+                        .WithMany()
+                        .HasForeignKey("DoktorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("HastaneRandevuSistemi.Entities.DbHasta", "Hasta")
                         .WithMany()
                         .HasForeignKey("HastaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Doktor");
 
                     b.Navigation("Hasta");
                 });

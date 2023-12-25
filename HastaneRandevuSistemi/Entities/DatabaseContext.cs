@@ -9,5 +9,8 @@ namespace HastaneRandevuSistemi.Entities
         }
 
         public  DbSet<User> Users { get; set; }
+        public DbSet<DbDoctor> Doctors { get; set; }
+        public DbSet<DbHasta> Hastas { get; set; }
+        public DbSet<DbRandevu> Randevus { get; set; }
     }
 }
