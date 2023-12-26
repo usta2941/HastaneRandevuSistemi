@@ -13,8 +13,14 @@ namespace HastaneRandevuSistemi.Entities
         public string? Soyad { get; set; }
         public DateTime DogumTarihi { get; set; }
 
-        [ForeignKey("DoctorId")]
+
+        
+        public DbRandevu? Randevu { get; set; }
+
+
+        // foreign key one-many
         [Required]
-        public DbDoctor? Doktor { get; set; } // db ile doktor bilgisine erişim (navigation property)
+        public Guid DoctorId { get; set; }
+        public DbDoctor? Doktor { get; set; }
     }
 }

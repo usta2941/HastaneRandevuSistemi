@@ -20,5 +20,7 @@ namespace HastaneRandevuSistemi.Entities
         public DateTime breakTime { get; set; } // öğlen arası
 
         public string? Description { get; set; } // doktor için kısa bir tanıtım metni
+
+        public ICollection<DbHasta> dbHastas { get; } = new List<DbHasta>();
     }
 }

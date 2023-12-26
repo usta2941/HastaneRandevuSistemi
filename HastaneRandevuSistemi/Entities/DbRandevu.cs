@@ -11,8 +11,9 @@ namespace HastaneRandevuSistemi.Entities
         public Guid RandevuId { get; set; }
         public DateTime Tarih { get; set; } // gün ay yıl saat dk bilgisini tutar
 
-        [ForeignKey("HastaId")]
-        [Required]
+       
+       
+        public Guid HastaID { get; set; }  // one to one
         public DbHasta? Hasta { get; set; } // Navigation property db hızlı erişim
         
     }
