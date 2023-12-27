@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.X509Certificates;
+
 
 namespace HastaneRandevuSistemi.Entities
 {
@@ -12,5 +14,17 @@ namespace HastaneRandevuSistemi.Entities
         public DbSet<DbDoctor> Doctors { get; set; }
         public DbSet<DbHasta> Hastas { get; set; }
         public DbSet<DbRandevu> Randevus { get; set; }
+        public DbSet<Clinic> clinics { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            
+
+            base.OnModelCreating(modelBuilder);
+
+            
+
+        }
     }
 }

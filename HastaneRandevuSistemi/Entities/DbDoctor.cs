@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HastaneRandevuSistemi.Entities
@@ -13,7 +14,6 @@ namespace HastaneRandevuSistemi.Entities
         public string? Name { get; set; }
         [Required]
         [StringLength(100)]
-        public string? Deparmant { get; set; }
         public DateTime start { get; set; } // mesai başlangıcı
         public DateTime end { get; set; } // mesai bitişi
 
@@ -21,6 +21,11 @@ namespace HastaneRandevuSistemi.Entities
 
         public string? Description { get; set; } // doktor için kısa bir tanıtım metni
 
-        public ICollection<DbHasta> dbHastas { get; } = new List<DbHasta>();
+        public Clinic? clinic { get; set; }
+
+        [ForeignKey("clinic")]
+        public Guid clinicId { get; set; }
+
+        public ICollection<DbRandevu>? Randevus { get; set; }
     }
 }

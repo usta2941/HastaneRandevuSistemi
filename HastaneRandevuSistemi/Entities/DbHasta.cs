@@ -14,13 +14,7 @@ namespace HastaneRandevuSistemi.Entities
         public DateTime DogumTarihi { get; set; }
 
 
-        
-        public DbRandevu? Randevu { get; set; }
-
-
-        // foreign key one-many
-        [Required]
-        public Guid DoctorId { get; set; }
-        public DbDoctor? Doktor { get; set; }
+     
+        public ICollection<DbRandevu>? randevus;
     }
 }
